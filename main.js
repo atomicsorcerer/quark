@@ -10,7 +10,7 @@ const prefix = "?";
 
 client.on("ready", () => {
   console.log("Quark is ready!");
-  client.user.setActivity("!help - Science Facts and News", {
+  client.user.setActivity("?help - Science for Discord", {
     type: "LISTENING",
     url: "https://github.com/SJTechy/buzz",
   });
@@ -57,13 +57,26 @@ client.on("message", (msg) => {
               console.log(err)
             })
     }
+    if (args[0] === "getquark") {
+      const embed = new Discord.MessageEmbed()
+        .setColor("#007ea8")
+        .setTitle('Get Quark')
+        .addFields(
+          {value: "https://discord.com/api/oauth2/authorize?client_id=838275838096048148&permissions=3691511024&scope=bot", name: "Click here to add Quark!"},
+          {value: "If you have any questions, please contact @CoderSeth", name: "Help"}
+        )
+
+        msg.channel.send(embed)
+    }
     if (args[0] === "help") {
         const embed = new Discord.MessageEmbed()
           .setTitle("Quark Help")
           .setDescription("Science for Discord")
           .addFields(
             {value: "The NASA Picture of the Day", name: "`?apod`", inline: false},
-            {value: "An image from NASA's Curiosity rover!", name: "`?marsimg`", inline: false}
+            {value: "An image from NASA's Curiosity rover!", name: "`?marsimg`", inline: false},
+            {value: "Instructions to add Quark for your server", name: "`?getquark`", inline: false},
+            {value: "https://github.com/SJTechy/quark", name: "`Github`", inline: false}
           )
           .setColor("#007ea8")
 
