@@ -8,11 +8,10 @@ const client = new Discord.Client();
 
 const prefix = "?";
 
-const {help} = require('./commands/help')
-const {getquark} = require('./commands/getquark')
-const {apod} = require('./commands/apod')
-const {marsimg} = require('./commands/marsimg')
-
+const { help } = require("./commands/help");
+const { getquark } = require("./commands/getquark");
+const { apod } = require("./commands/apod");
+const { marsimg } = require("./commands/marsimg");
 
 client.on("ready", () => {
   console.log("Quark is ready!");
@@ -30,18 +29,10 @@ client.on("message", (msg) => {
       .split(" ")
       .map((item) => item.trim());
 
-    if (args[0] === "apod") {
-      apod(msg)
-    }
-    if (args[0] === "marsimg") {
-        marsimg(msg)
-    }
-    if (args[0] === "getquark") {
-      getquark(msg)
-    }
-    if (args[0] === "help") {
-        help(msg)
-    }
+    if (args[0] === "apod") apod(msg);
+    if (args[0] === "marsimg") marsimg(msg);
+    if (args[0] === "help") help(msg);
+    if (args[0] === "getquark") getquark(msg);
   }
 });
 
