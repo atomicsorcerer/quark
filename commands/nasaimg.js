@@ -17,7 +17,16 @@ function nasaimg(msg, param) {
         .setImage(parsedData[randNum].links[0].href)
         .setColor("#007ea8");
 
-      msg.channel.send(embed);
+      msg.channel.send(embed)
+        .catch(err => {
+          const errorEmbed = new Discord.MessageEmbed()
+          .setTitle(`NASA Image Search`)
+          .setDescription(`An error occurred while searching for ${param}.`)
+          .setImage('https://media0.giphy.com/media/jpPZo8ScZenZ7yQK3v/giphy.gif')
+          .setColor("#007ea8");
+
+          msg.channel.send(errorEmbed)
+        })
     })
     .catch(err => {
       const embed = new Discord.MessageEmbed()
