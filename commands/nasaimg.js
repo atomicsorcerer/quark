@@ -18,7 +18,16 @@ function nasaimg(msg, param) {
         .setColor("#007ea8");
 
       msg.channel.send(embed);
-    });
+    })
+    .catch(err => {
+      const embed = new Discord.MessageEmbed()
+        .setTitle(`NASA Image Search`)
+        .setDescription(`No results were found for ${param}.`)
+        .setImage('https://media0.giphy.com/media/jpPZo8ScZenZ7yQK3v/giphy.gif')
+        .setColor("#007ea8");
+
+        msg.channel.send(embed)
+    })
 }
 
 module.exports = { nasaimg };
