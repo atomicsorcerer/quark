@@ -4,10 +4,6 @@ require("dotenv").config();
 
 const fetch = require("node-fetch");
 
-const client = new Discord.Client();
-
-const prefix = "?";
-
 function marsimg(msg) {
     var randNum = Math.floor(
         Math.random() * 100
@@ -21,9 +17,17 @@ function marsimg(msg) {
       )
         .then((res) => res.json())
         .then((data) => {
-          msg.channel.send(`Here is an image from the Curiosity rover! Date: ${data.photos[randNum].earth_date}`, {
-            files: [data.photos[randNum].img_src],
-          });
+
+          const embed = new Discord.MessageEmbed()
+            .setTitle("Here is an image from the Curiosity rover!")
+            .setDescription(data.photos[randNum].earth_date)
+            .setImage(data.photos[randNum].img_src)
+            .setColor("#007ea8")
+
+          msg.channel.send(embed)
+          // msg.channel.send(`Here is an image from the Curiosity rover! Date: ${data.photos[randNum].earth_date}`, {
+          //   files: [data.photos[randNum].img_src],
+          // });
         })
         .catch(err => {
           msg.channel.send("Sorry, an error occurred.")

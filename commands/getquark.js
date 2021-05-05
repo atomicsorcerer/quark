@@ -2,12 +2,6 @@ const Discord = require("discord.js");
 
 require("dotenv").config();
 
-const fetch = require("node-fetch");
-
-const client = new Discord.Client();
-
-const prefix = "?";
-
 function getquark(msg) {
     const embed = new Discord.MessageEmbed()
     .setColor("#007ea8")
