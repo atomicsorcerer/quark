@@ -11,6 +11,7 @@ const { nasaimg } = require("./commands/nasaimg");
 const { getquark } = require("./commands/getquark");
 const { apod } = require("./commands/apod");
 const { marsimg } = require("./commands/marsimg");
+const { spaceicon } = require("./commands/spaceicon");
 
 client.on("ready", () => {
   console.log("Quark is ready!");
@@ -33,6 +34,8 @@ client.on("message", (msg) => {
     if (args[0] === "help") help(msg);
     if (args[0] === "getquark") getquark(msg);
     if (args[0] === "nasaimg") nasaimg(msg, args[1]);
+    if (args[0] === "spaceicon") spaceicon(msg);
+
   }
 });
 
