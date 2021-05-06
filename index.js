@@ -7,6 +7,7 @@ const client = new Discord.Client();
 const prefix = "q?";
 
 const { help } = require("./commands/help");
+const { info } = require("./commands/info");
 const { nasaimg } = require("./commands/nasaimg");
 const { getquark } = require("./commands/getquark");
 const { apod } = require("./commands/apod");
@@ -35,6 +36,7 @@ client.on("message", (msg) => {
     if (args[0] === "getquark") getquark(msg);
     if (args[0] === "nasaimg") nasaimg(msg, args[1]);
     if (args[0] === "spaceicon") spaceicon(msg);
+    if (args[0] === "info") info(msg);
 
   }
 });
