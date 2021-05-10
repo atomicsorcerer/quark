@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 
-const { createCanvas, loadImage } = require("canvas");
+const { createCanvas, loadImage, registerFont } = require("canvas");
 
 require("dotenv").config();
 
@@ -17,6 +17,7 @@ function spaceicon(msg) {
 
   const canvas = createCanvas(500, 500);
   const ctx = canvas.getContext("2d");
+  registerFont('./fonts/opensans.ttf', { family: 'Open Sans' })
 
   const spaceImg = loadImage(
     photos[randNum]
@@ -24,7 +25,7 @@ function spaceicon(msg) {
   .then(image => {
 
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
-    ctx.font = "50px Impact";
+    ctx.font = "50px Open Sans";
     ctx.fillText(`${msg.author.username}`, 125, 250);
     const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
