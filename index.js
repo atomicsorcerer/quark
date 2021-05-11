@@ -14,6 +14,7 @@ const { apod } = require("./commands/apod");
 const { marsimg } = require("./commands/marsimg");
 const { spaceicon } = require("./commands/spaceicon");
 const { commandNotFound } = require("./commands/commandNotFound");
+const { pi } = require("./commands/pi");
 
 
 client.on("ready", () => {
@@ -40,6 +41,7 @@ client.on("message", (msg) => {
     else if (args[0] === "nasaimg") nasaimg(msg, args[1]);
     else if (args[0] === "spaceicon") spaceicon(msg);
     else if (args[0] === "info") info(msg);
+    else if (args[0] === "pi") pi(msg, args[1]);
 
     else {
       commandNotFound(msg)

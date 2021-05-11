@@ -10,6 +10,9 @@ function help(msg) {
     \`q?apod\` - The NASA Picture of the Day
     \`q?marsimg\` - An image from NASA's Curiosity rover
 
+    **Math Fun!**
+    \`q?pi digits\` - A long string of π up to (digits)
+
     **Fun**
     \`q?spaceicon\` - Returns a personalized space theme icon
 
