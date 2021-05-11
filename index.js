@@ -23,8 +23,9 @@ client.on("ready", () => {
 });
 
 client.on("message", (msg) => {
-  if (msg.content.startsWith(prefix) && !msg.author.bot) {
+  if (msg.content.toLowerCase().startsWith(prefix) && !msg.author.bot) {
     var args = msg.content
+      .toLowerCase()
       .trim()
       .substr(2)
       .split(" ")

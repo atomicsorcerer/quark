@@ -8,12 +8,12 @@ function marsimg(msg) {
     var randNum = Math.floor(
         Math.random() * 100
       );
-      // var randNum2 = Math.floor(
-      //   Math.random() * 3100
-      // );
+      var randNum2 = Math.floor(
+        Math.random() * 3100 + 1
+      );
 
     fetch(
-        `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${process.env.NASA_API_KEY}`
+        `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${randNum2}&api_key=${process.env.NASA_API_KEY}`
       )
         .then((res) => res.json())
         .then((data) => {
