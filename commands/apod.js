@@ -22,7 +22,16 @@ function apod(msg) {
       .setColor("#007ea8")
 
       msg.channel.send(embed)
-    });
+    }
+    ).catch(err => {
+      const embed = new Discord.MessageEmbed()
+      .setTitle(`NASA Image of the Day`)
+      .setDescription(`Sorry, an error occured. Please try again.`)
+      .setImage("https://media0.giphy.com/media/jpPZo8ScZenZ7yQK3v/giphy.gif")
+      .setColor("#007ea8");
+
+      msg.channel.send(embed);
+    })
 }
 
 module.exports = { apod };
