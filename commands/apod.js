@@ -22,9 +22,6 @@ function apod(msg) {
       .setColor("#007ea8")
 
       msg.channel.send(embed)
-      // msg.channel.send("Here is the NASA Picture of the Day!", {
-      //   files: [data.url],
-      // });
     });
 }
 

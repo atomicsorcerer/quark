@@ -16,7 +16,7 @@ const { spaceicon } = require("./commands/spaceicon");
 
 client.on("ready", () => {
   console.log("Quark is ready!");
-  client.user.setActivity("q?help - Science for Discord", {
+  client.user.setActivity(`q?help | Observing ${client.guilds.cache.size} servers, and ${client.guilds.cache.map((guild) => guild.memberCount).reduce((p, c) => p + c)} users! | Science for Discord!`, {
     type: "LISTENING",
     url: "https://github.com/SJTechy/buzz",
   });
