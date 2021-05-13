@@ -6,7 +6,6 @@ const fetch = require("node-fetch");
 
 const client = new Discord.Client();
 
-
 function apod(msg) {
 
   fetch(
