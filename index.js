@@ -16,7 +16,7 @@ const { spaceicon } = require("./commands/spaceicon");
 const { commandNotFound } = require("./commands/commandNotFound");
 const { pi } = require("./commands/pi");
 const { github } = require("./commands/github");
-
+const { admin } = require("./commands/admin");
 
 client.on("ready", () => {
   console.log("Quark is ready!");
@@ -35,6 +35,8 @@ client.on("message", (msg) => {
       .split(" ")
       .map((item) => item.trim());
 
+    if (msg.guild.id !== '765408350052679690') return
+
     if (args[0] === "apod") apod(msg);
     else if (args[0] === "marsimg") marsimg(msg);
     else if (args[0] === "help") help(msg);
@@ -44,6 +46,7 @@ client.on("message", (msg) => {
     else if (args[0] === "info") info(msg);
     else if (args[0] === "pi") pi(msg, args[1]);
     else if (args[0] === "github") github(msg);
+    else if (args[0] === "admin") admin(msg, client, args[1]);
 
     else {
       commandNotFound(msg)
