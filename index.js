@@ -35,8 +35,6 @@ client.on("message", (msg) => {
       .split(" ")
       .map((item) => item.trim());
 
-    if (msg.guild.id !== '765408350052679690') return
-
     if (args[0] === "apod") apod(msg);
     else if (args[0] === "marsimg") marsimg(msg);
     else if (args[0] === "help") help(msg);
