@@ -7,12 +7,36 @@ Quark uses many mediums to connect users with science and space. The main one is
 
 ## Commands
 
-### ?apod
+### q?apod
 
 NASA's image of the day
 
-### ?marsimg
+### q?marsimg
 
 An image from the Curiosity Mars rover
+
+### q?pi (digits)
+
+Returns (digits) amount of pi
+
+### q?spaceicon
+
+Provides a personalized space icon for any users
+
+### q?nasaimg (param)
+
+Searches the NASA database for (param)
+
+### q?getquark
+
+Gives instructions on how to add Quark to a server
+
+### q?info
+
+Shows some basic info on Quark
+
+### q?help
+
+Gives a list of commands for Quark
 
 ...More commands coming!

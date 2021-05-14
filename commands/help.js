@@ -17,7 +17,7 @@ function help(msg) {
     \`q?spaceicon\` - Returns a personalized space theme icon
 
     **Github**
-    \`Quark Repository\` - https://github.com/SJTechy/quark - Please star!
+    \`q?github\` - The Quark Github repository
 
     **Misc.**
     \`q?getquark\` - Instructions to add Quark to your server

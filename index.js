@@ -15,6 +15,7 @@ const { marsimg } = require("./commands/marsimg");
 const { spaceicon } = require("./commands/spaceicon");
 const { commandNotFound } = require("./commands/commandNotFound");
 const { pi } = require("./commands/pi");
+const { github } = require("./commands/github");
 
 
 client.on("ready", () => {
@@ -42,6 +43,7 @@ client.on("message", (msg) => {
     else if (args[0] === "spaceicon") spaceicon(msg);
     else if (args[0] === "info") info(msg);
     else if (args[0] === "pi") pi(msg, args[1]);
+    else if (args[0] === "github") github(msg);
 
     else {
       commandNotFound(msg)
