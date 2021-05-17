@@ -55,8 +55,6 @@ client.on("message", (msg) => {
       .map((item) => item.trim());
     }
 
-    console.log(msg.channel.type)
-
     if (args[0] === "apod") apod(msg);
     else if (args[0] === "marsimg") marsimg(msg);
     else if (args[0] === "help") help(msg);
