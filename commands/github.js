@@ -11,7 +11,7 @@ function github(msg) {
 
         Please star the repo, it really helps!
 
-        If you have any questions, or want to contribute features, please contact \`@CoderSeth\`\ or \`@SJTechy\`\!
+        If you have any questions, or want to contribute features, please contact \`@CoderSeth#6250\`\ or \`@SJTechy#2722\`\!
         `)
         .setColor("#007ea8");
 
