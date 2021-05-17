@@ -27,13 +27,35 @@ client.on("ready", () => {
 });
 
 client.on("message", (msg) => {
-  if (msg.content.toLowerCase().startsWith(prefix) && !msg.author.bot) {
-    var args = msg.content
+
+  // if (msg.guild.id != '765408350052679690') return
+
+  if ((msg.content.toLowerCase().startsWith(prefix) && !msg.author.bot) || (msg.channel.type == 'dm' && !msg.author.bot)) {
+    var args;
+
+    if (msg.channel.type == 'dm' && msg.content.toLowerCase().startsWith(prefix)) {
+      args = msg.content
+        .toLowerCase()
+        .trim()
+        .substr(2)
+        .split(" ")
+        .map((item) => item.trim());
+    } else if (msg.channel.type == 'dm') {
+      args = msg.content
+      .toLowerCase()
+      .trim()
+      .split(" ")
+      .map((item) => item.trim());
+    } else {
+      args = msg.content
       .toLowerCase()
       .trim()
       .substr(2)
       .split(" ")
       .map((item) => item.trim());
+    }
+
+    console.log(msg.channel.type)
 
     if (args[0] === "apod") apod(msg);
     else if (args[0] === "marsimg") marsimg(msg);
@@ -45,7 +67,6 @@ client.on("message", (msg) => {
     else if (args[0] === "pi") pi(msg, args[1]);
     else if (args[0] === "github") github(msg);
     else if (args[0] === "admin") admin(msg, client, args[1]);
-
     else {
       commandNotFound(msg)
     }
