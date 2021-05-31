@@ -20,6 +20,7 @@ const { admin } = require("./commands/admin");
 
 client.on("ready", () => {
   console.log("Quark is ready!");
+
   client.user.setActivity(`q?help | Observing ${client.guilds.cache.size} servers, and ${client.guilds.cache.map((guild) => guild.memberCount).reduce((p, c) => p + c)} users! | Science for Discord!`, {
     type: "LISTENING",
     url: "https://github.com/SJTechy/buzz",
@@ -27,8 +28,6 @@ client.on("ready", () => {
 });
 
 client.on("message", (msg) => {
-
-  // if (msg.guild.id != '765408350052679690') return
 
   if ((msg.content.toLowerCase().startsWith(prefix) && !msg.author.bot) || (msg.channel.type == 'dm' && !msg.author.bot)) {
     var args;
@@ -65,9 +64,7 @@ client.on("message", (msg) => {
     else if (args[0] === "pi") pi(msg, args[1]);
     else if (args[0] === "github") github(msg);
     else if (args[0] === "admin") admin(msg, client, args[1]);
-    else {
-      commandNotFound(msg)
-    }
+    else commandNotFound(msg)
 
   }
 });
