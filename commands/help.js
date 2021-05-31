@@ -16,6 +16,9 @@ function help(msg) {
     **Fun**
     \`q?spaceicon\` - Returns a personalized space theme icon
 
+    **Kerbal Space Program**
+    \`q?kspimg\` - An image from the r/KerbalSpaceProgram subreddit
+
     **Github**
     \`q?github\` - The Quark Github repository
 

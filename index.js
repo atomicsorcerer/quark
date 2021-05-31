@@ -17,6 +17,7 @@ const { commandNotFound } = require("./commands/commandNotFound");
 const { pi } = require("./commands/pi");
 const { github } = require("./commands/github");
 const { admin } = require("./commands/admin");
+const { kspimg } = require("./commands/kspimg");
 
 client.on("ready", () => {
   console.log("Quark is ready!");
@@ -64,6 +65,7 @@ client.on("message", (msg) => {
     else if (args[0] === "pi") pi(msg, args[1]);
     else if (args[0] === "github") github(msg);
     else if (args[0] === "admin") admin(msg, client, args[1]);
+    else if (args[0] === "kspimg") kspimg(msg);
     else commandNotFound(msg)
 
   }
