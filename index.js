@@ -22,6 +22,8 @@ const { kspimg } = require("./commands/kspimg");
 client.on("ready", () => {
   console.log("Quark is ready!");
 
+  client.guilds.cache.map(guild => console.log(guild.name, guild.id, guild.memberCount))
+
   client.user.setActivity(`q?help | Observing ${client.guilds.cache.size} servers, and ${client.guilds.cache.map((guild) => guild.memberCount).reduce((p, c) => p + c)} users! | Science for Discord!`, {
     type: "LISTENING",
     url: "https://github.com/SJTechy/buzz",

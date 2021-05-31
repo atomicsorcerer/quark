@@ -27,6 +27,10 @@ Provides a personalized space icon for any users
 
 Searches the NASA database for (param)
 
+### q?kspimg (param)
+
+An image from the r/KerbalSpaceProgram subreddit
+
 ### q?getquark
 
 Gives instructions on how to add Quark to a server

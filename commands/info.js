@@ -6,7 +6,7 @@ function info(msg) {
     const embed = new Discord.MessageEmbed()
     .setTitle("Quark Info")
     .setDescription(`
-    **Developers** - \`@CoderSeth#6250\` and \`@SJTechy#2722\`
+    **Developers** - \`@SJTechy#2722\`
 
     **Start Date** - \`May 2021\`
 
