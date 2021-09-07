@@ -15,6 +15,7 @@ function help(msg) {
 
     **Fun**
     \`q?spaceicon\` - Returns a personalized space theme icon
+    \`q?guess\` - A guessing game to test your knowledge of the Solar System!
 
     **Kerbal Space Program**
     \`q?kspimg\` - An image from the r/KerbalSpaceProgram subreddit
