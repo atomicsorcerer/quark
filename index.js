@@ -34,8 +34,6 @@ client.on("ready", () => {
 });
 
 client.on("message", (msg) => {
-    if (msg.guild.id !== '772179279609462794') return
-
     if ((msg.content.toLowerCase().startsWith(prefix) && !msg.author.bot) || (msg.channel.type == 'dm' && !msg.author.bot)) {
         var args;
 
