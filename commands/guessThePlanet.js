@@ -5,7 +5,12 @@ let planets = [
     { name: "Saturn", link: "https://solarsystem.nasa.gov/system/stellar_items/image_files/38_saturn_1600x900.jpg" },
     { name: "Jupiter", link: "https://solarsystem.nasa.gov/system/resources/detail_files/2486_stsci-h-p1936a_1800.jpg" },
     { name: "The Moon", link: "https://cdn.mos.cms.futurecdn.net/snbrHBRigvvzjxNGuUtcck.jpg" },
-    { name: "Mercury", link: "https://i.natgeofe.com/n/c6f7cee9-cde6-44a2-a686-9a80f5bfc1e8/01_mercury_pia15190_orig_4x3.jpg" }
+    { name: "Mercury", link: "https://i.natgeofe.com/n/c6f7cee9-cde6-44a2-a686-9a80f5bfc1e8/01_mercury_pia15190_orig_4x3.jpg" },
+    { name: "Pluto", link: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Pluto-01_Stern_03_Pluto_Color_TXT.jpg/1200px-Pluto-01_Stern_03_Pluto_Color_TXT.jpg" },
+    { name: "Mars", link: "https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg" },
+    { name: "Callisto", link: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Callisto.jpg" },
+    { name: "Deimos", link: "https://upload.wikimedia.org/wikipedia/commons/8/8d/Deimos-MRO.jpg" },
+    { name: "Phobos", link: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Phobos_colour_2008.jpg" },
 ]
 
 function guessThePlanet(msg) {
