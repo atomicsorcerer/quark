@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+const { EmbedBuilder } = require("discord.js");
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -14,15 +14,17 @@ export default function marsimg(msg) {
   )
     .then((res) => res.json())
     .then((data) => {
-      const embed = new Discord.MessageEmbed()
+      const embed = new EmbedBuilder()
         .setTitle("Here is an image from the Curiosity rover!")
         .setDescription(data.photos[randNum].earth_date)
         .setImage(data.photos[randNum].img_src)
         .setColor("#007ea8");
 
-      msg.channel.send(embed);
+      msg.reply({ embeds: [embed] });
     })
     .catch((err) => {
       marsimg(msg);
     });
 }
+
+module.exports = { marsimg };

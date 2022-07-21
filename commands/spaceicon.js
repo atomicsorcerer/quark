@@ -1,10 +1,11 @@
 import Discord from "discord.js";
 
-const { createCanvas, loadImage, registerFont } = require("canvas");
+const { createCanvas, loadImage, registerFont } = require("@napi-rs/canvas");
 
 require("dotenv").config();
 
-export default function spaceicon(msg) {
+function spaceicon(msg) {
+  console.log(msg);
   var randNum = Math.floor(Math.random() * 4);
   var randNum2 = Math.floor(Math.random() * 4);
   const photos = [
@@ -19,7 +20,6 @@ export default function spaceicon(msg) {
     "Flight Director",
     "Principle Investigator",
   ];
-  const space_img = loadImage(photos[randNum]);
 
   const canvas = createCanvas(500, 500);
   const ctx = canvas.getContext("2d");
@@ -30,7 +30,7 @@ export default function spaceicon(msg) {
     .then((image) => {
       ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
       ctx.font = "50px Open Sans";
-      ctx.fillText(`${msg.author.username}`, 125, 250);
+      ctx.fillText(`${msg.user.username}`, 125, 250);
       ctx.font = "30px Open Sans Bold";
       ctx.fillText(`${subtitles[randNum2]}`, 125, 300);
       const attachment = new Discord.MessageAttachment(
@@ -38,7 +38,7 @@ export default function spaceicon(msg) {
         "space_icon.png"
       );
 
-      msg.channel.send(attachment);
+      msg.reply({ attachment });
     })
     .catch((err) => console.log(err));
 }

@@ -1,94 +1,165 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import Discord from "discord.js";
+import { EmbedBuilder, Client } from "discord.js";
 
-const { Client, Intents } = Discord;
+const client = new Client({ intents: ["Guilds"] });
 
-const myIntents = new Intents();
-myIntents.add("MESSAGE_CREATE", "GUILDS");
-
-client = new Client({ intents: ["GUILDS"] });
-
-const prefix = "q?";
-
-import help from "./commands/help.js";
-import info from "./commands/info.js";
-import nasaimg from "./commands/nasaimg.js";
-import getquark from "./commands/getquark.js";
-import apod from "./commands/apod.js";
-import marsimg from "./commands/marsimg.js";
-import spaceicon from "./commands/spaceicon.js";
-import commandNotFound from "./commands/commandNotFound.js";
-import pi from "./commands/pi.js";
-import github from "./commands/github.js";
-import admin from "./commands/admin.js";
-import kspimg from "./commands/kspimg.js";
-import guessThePlanet from "./commands/guessThePlanet.js";
+const { help } = require("./commands/help");
+// const { spaceicon } = require("./commands/spaceicon");
+const { info } = require("./commands/info");
+const { nasaimg } = require("./commands/nasaimg");
+const { getquark } = require("./commands/getquark");
+const { apod } = require("./commands/apod");
+const { marsimg } = require("./commands/marsimg");
+const { commandNotFound } = require("./commands/commandNotFound");
+const { pi } = require("./commands/pi");
+const { github } = require("./commands/github");
+const { admin } = require("./commands/admin");
+const { kspimg } = require("./commands/kspimg");
+const { guessThePlanet } = require("./commands/guessThePlanet");
 
 client.once("ready", () => {
   console.log("Quark is ready!");
 
   client.user.setActivity(
-    `q?help | Observing ${
+    `/help | Observing ${
       client.guilds.cache.size
     } servers, and ${client.guilds.cache
       .map((guild) => guild.memberCount)
       .reduce((p, c) => p + c)} users! | bit.ly/quark-bot`,
     {
       type: "LISTENING",
-      url: "https://github.com/SJTechy/buzz",
     }
   );
 });
 
-client.on("messageCreate", (msg) => {
-  if (
-    (msg.content.toLowerCase().startsWith(prefix) && !msg.author.bot) ||
-    (msg.channel.type == "dm" && !msg.author.bot)
-  ) {
-    let args;
+client.on("interactionCreate", async (interaction) => {
+  const { commandName } = interaction;
 
-    if (
-      msg.channel.type == "dm" &&
-      msg.content.toLowerCase().startsWith(prefix)
-    ) {
-      args = msg.content
-        .toLowerCase()
-        .trim()
-        .substr(2)
-        .split(" ")
-        .map((item) => item.trim());
-    } else if (msg.channel.type == "dm") {
-      args = msg.content
-        .toLowerCase()
-        .trim()
-        .split(" ")
-        .map((item) => item.trim());
-    } else {
-      args = msg.content
-        .toLowerCase()
-        .trim()
-        .substr(2)
-        .split(" ")
-        .map((item) => item.trim());
+  if (interaction.isSelectMenu()) {
+    if (interaction.message.interaction.commandName === "guesstheplanet") {
+      const correctEmbed = new EmbedBuilder()
+        .setTitle("Guess the Planet (or moon)")
+        .setDescription(
+          `
+        ✅✅ Correct!! ✅✅
+        `
+        )
+        .setColor("#007ea8");
+
+      const wrongEmbed = new EmbedBuilder()
+        .setTitle("Guess the Planet (or moon)")
+        .setDescription(
+          `
+        ❌❌ Sorry, that is incorrect. ❌❌
+        `
+        )
+        .setColor("#007ea8");
+
+      await interaction.update({
+        embeds: [
+          interaction.customId === interaction.values[0]
+            ? correctEmbed
+            : wrongEmbed,
+        ],
+        components: [],
+      });
     }
 
-    if (args[0] === "apod") apod(msg);
-    else if (args[0] === "marsimg") marsimg(msg);
-    else if (args[0] === "help") help(msg);
-    else if (args[0] === "getquark") getquark(msg);
-    else if (args[0] === "nasaimg") nasaimg(msg, args[1]);
-    else if (args[0] === "spaceicon") spaceicon(msg);
-    else if (args[0] === "info") info(msg);
-    else if (args[0] === "pi") pi(msg, args[1]);
-    else if (args[0] === "github") github(msg);
-    else if (args[0] === "admin") admin(msg, client, args[1]);
-    else if (args[0] === "kspimg") kspimg(msg);
-    else if (args[0] === "guess" || args[0] === "guesstheplanet")
-      guessThePlanet(msg);
-    else commandNotFound(msg);
+    return;
   }
+
+  if (commandName === "help") await help(interaction);
+  else if (commandName == "apod") await apod(interaction);
+  else if (commandName == "pi")
+    await pi(interaction, interaction.options.getInteger("digits"));
+  else if (commandName == "info") await info(interaction);
+  else if (commandName == "nasaimage")
+    await nasaimg(interaction, interaction.options.getString("Search term"));
+  else if (commandName == "getquark") await getquark(interaction);
+  else if (commandName == "marsimage") await marsimg(interaction);
+  else if (commandName == "commandnotfound") await commandNotFound(interaction);
+  else if (commandName == "github") await github(interaction);
+  else if (commandName == "kspimage") await kspimg(interaction);
+  else if (commandName == "guesstheplanet") await guessThePlanet(interaction);
 });
+
+// client.on("message", (msg) => {
+//     if (msg.guild.id !== '772179279609462794') return
+
+//     if ((msg.content.toLowerCase().startsWith(prefix) && !msg.author.bot) || (msg.channel.type == 'dm' && !msg.author.bot)) {
+//         var args;
+
+//         if (msg.channel.type == 'dm' && msg.content.toLowerCase().startsWith(prefix)) {
+
+// client.on("message", (msg) => {
+//     if (msg.guild.id !== '772179279609462794') return
+
+//     if ((msg.content.toLowerCase().startsWith(prefix) && !msg.author.bot) || (msg.channel.type == 'dm' && !msg.author.bot)) {
+//         var args;
+
+//         if (msg.channel.type == 'dm' && msg.content.toLowerCase().startsWith(prefix)) {
+
+// client.on("message", (msg) => {
+//     if (msg.guild.id !== '772179279609462794') return
+
+//     if ((msg.content.toLowerCase().startsWith(prefix) && !msg.author.bot) || (msg.channel.type == 'dm' && !msg.author.bot)) {
+//         var args;
+
+//         if (msg.channel.type == 'dm' && msg.content.toLowerCase().startsWith(prefix)) {
+
+// client.on("message", (msg) => {
+//     if (msg.guild.id !== '772179279609462794') return
+
+//     if ((msg.content.toLowerCase().startsWith(prefix) && !msg.author.bot) || (msg.channel.type == 'dm' && !msg.author.bot)) {
+//         var args;
+
+//         if (msg.channel.type == 'dm' && msg.content.toLowerCase().startsWith(prefix)) {
+
+// client.on("message", (msg) => {
+//     if (msg.guild.id !== '772179279609462794') return
+
+//     if ((msg.content.toLowerCase().startsWith(prefix) && !msg.author.bot) || (msg.channel.type == 'dm' && !msg.author.bot)) {
+//         var args;
+
+//         if (msg.channel.type == 'dm' && msg.content.toLowerCase().startsWith(prefix)) {
+//             args = msg.content
+//                 .toLowerCase()
+//                 .trim()
+//                 .substr(2)
+//                 .split(" ")
+//                 .map((item) => item.trim());
+//         } else if (msg.channel.type == 'dm') {
+//             args = msg.content
+//                 .toLowerCase()
+//                 .trim()
+//                 .split(" ")
+//                 .map((item) => item.trim());
+//         } else {
+//             args = msg.content
+//                 .toLowerCase()
+//                 .trim()
+//                 .substr(2)
+//                 .split(" ")
+//                 .map((item) => item.trim());
+//         }
+
+//         if (args[0] === "apod") apod(msg);
+//         else if (args[0] === "marsimg") marsimg(msg);
+//         else if (args[0] === "help") help(msg);
+//         else if (args[0] === "getquark") getquark(msg);
+//         else if (args[0] === "nasaimg") nasaimg(msg, args[1]);
+//         else if (args[0] === "spaceicon") spaceicon(msg);
+//         else if (args[0] === "info") info(msg);
+//         else if (args[0] === "pi") pi(msg, args[1]);
+//         else if (args[0] === "github") github(msg);
+//         else if (args[0] === "admin") admin(msg, client, args[1]);
+//         else if (args[0] === "kspimg") kspimg(msg);
+//         else if (args[0] === "guess" || args[0] === "guesstheplanet") guessThePlanet(msg);
+//         else commandNotFound(msg)
+
+//     }
+// });
 
 client.login(process.env.ID);

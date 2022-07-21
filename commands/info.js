@@ -1,21 +1,21 @@
-import Discord from "discord.js";
+const { EmbedBuilder } = require("discord.js");
 
 import dotenv from "dotenv";
 dotenv.config();
 
-export default function info(msg) {
-  const embed = new Discord.MessageEmbed()
+function info(msg) {
+  const embed = new EmbedBuilder()
     .setTitle("Quark Info")
     .setDescription(
       `
-    **Developers** - \`@SJTechy#2722\`
-
     **Start Date** - \`May 2021\`
 
-    **Goals** - \`To help users connect with science through fun, and easy ways!\`
+    **Goals** - \`To help users connect with science through fun!\`
     `
     )
     .setColor("#007ea8");
 
-  msg.channel.send(embed);
+  msg.reply({ embeds: [embed] });
 }
+
+module.exports = { info };
