@@ -21,16 +21,21 @@ const { guessThePlanet } = require("./commands/guessThePlanet");
 client.once("ready", () => {
   console.log("Quark is ready!");
 
-  client.user.setActivity(
-    `/help | Observing ${
-      client.guilds.cache.size
-    } servers, and ${client.guilds.cache
-      .map((guild) => guild.memberCount)
-      .reduce((p, c) => p + c)} users! | bit.ly/quark-bot`,
-    {
-      type: "LISTENING",
-    }
-  );
+  client.user.setPresence({
+    activities: [
+      {
+        name: `/help | Observing ${client.guilds.cache.size} servers | bit.ly/quark-bot`,
+        type: `LISTENING`,
+      },
+    ],
+  });
+
+  // client.user.setActivity(
+  //   `/help | Observing ${client.guilds.cache.size} servers | bit.ly/quark-bot`,
+  //   {
+  //     type: "LISTENING",
+  //   }
+  // );
 });
 
 client.on("interactionCreate", async (interaction) => {
