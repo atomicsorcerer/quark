@@ -1,10 +1,11 @@
-const Discord = require("discord.js");
+import Discord from "discord.js";
 
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
 const fetch = require("node-fetch");
 
-function marsimg(msg) {
+export default function marsimg(msg) {
   var randNum = Math.floor(Math.random() * 100);
   var randNum2 = Math.floor(Math.random() * 3100 + 1);
 
@@ -22,8 +23,6 @@ function marsimg(msg) {
       msg.channel.send(embed);
     })
     .catch((err) => {
-      marsimg(msg)
+      marsimg(msg);
     });
 }
-
-module.exports = { marsimg };

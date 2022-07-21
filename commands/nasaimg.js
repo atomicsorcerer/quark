@@ -1,10 +1,11 @@
-const Discord = require("discord.js");
+import Discord from "discord.js";
 
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
-const fetch = require("node-fetch");
+import fetch from "node-fetch";
 
-function nasaimg(msg, param) {
+export default function nasaimg(msg, param) {
   var randNum = Math.floor(Math.random() * 10);
 
   fetch(`https://images-api.nasa.gov/search?q=${param}`)
@@ -17,26 +18,25 @@ function nasaimg(msg, param) {
         .setImage(parsedData[randNum].links[0].href)
         .setColor("#007ea8");
 
-      msg.channel.send(embed)
-        .catch(err => {
-          const errorEmbed = new Discord.MessageEmbed()
+      msg.channel.send(embed).catch((err) => {
+        const errorEmbed = new Discord.MessageEmbed()
           .setTitle(`NASA Image Search`)
           .setDescription(`An error occurred while searching for ${param}.`)
-          .setImage('https://media0.giphy.com/media/jpPZo8ScZenZ7yQK3v/giphy.gif')
+          .setImage(
+            "https://media0.giphy.com/media/jpPZo8ScZenZ7yQK3v/giphy.gif"
+          )
           .setColor("#007ea8");
 
-          msg.channel.send(errorEmbed)
-        })
+        msg.channel.send(errorEmbed);
+      });
     })
-    .catch(err => {
+    .catch((err) => {
       const embed = new Discord.MessageEmbed()
         .setTitle(`NASA Image Search`)
         .setDescription(`No results were found for ${param}.`)
-        .setImage('https://media0.giphy.com/media/jpPZo8ScZenZ7yQK3v/giphy.gif')
+        .setImage("https://media0.giphy.com/media/jpPZo8ScZenZ7yQK3v/giphy.gif")
         .setColor("#007ea8");
 
-        msg.channel.send(embed)
-    })
+      msg.channel.send(embed);
+    });
 }
-
-module.exports = { nasaimg };

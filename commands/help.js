@@ -1,11 +1,13 @@
-const Discord = require("discord.js");
+import Discord from "discord.js";
 
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
-function help(msg) {
-    const embed = new Discord.MessageEmbed()
+export default function help(msg) {
+  const embed = new Discord.MessageEmbed()
     .setTitle("Quark Help")
-    .setDescription(`
+    .setDescription(
+      `
     **NASA Resources**
     \`q?apod\` - The NASA Picture of the Day
     \`q?marsimg\` - An image from NASA's Curiosity rover
@@ -28,10 +30,9 @@ function help(msg) {
     \`q?info\` - General info about Quark
 
 
-    `)
-    .setColor("#007ea8")
+    `
+    )
+    .setColor("#007ea8");
 
-  msg.channel.send(embed)
+  msg.channel.send(embed);
 }
-
-module.exports = { help }

@@ -1,10 +1,11 @@
-const Discord = require("discord.js");
+import Discord from "discord.js";
 
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
 const fetch = require("node-fetch");
 
-function kspimg(msg) {
+export default function kspimg(msg) {
   fetch("http://www.reddit.com/r/KerbalSpaceProgram.json")
     .then((res) => res.json())
     .then((data) => {
@@ -25,11 +26,9 @@ function kspimg(msg) {
           .setTitle("KSP Image")
           .setDescription("From the r/KerbalSpaceProgram subreddit")
           .setImage(url)
-          .setColor("#007ea8")
+          .setColor("#007ea8");
 
         msg.channel.send(embed);
       }
     });
 }
-
-module.exports = { kspimg }
