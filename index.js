@@ -1,7 +1,6 @@
-import dotenv from "dotenv";
-dotenv.config();
+require("dotenv").config();
 
-import { EmbedBuilder, Client } from "discord.js";
+const { EmbedBuilder, Client } = require("discord.js");
 
 const client = new Client({ intents: ["Guilds"] });
 
@@ -76,7 +75,7 @@ client.on("interactionCreate", async (interaction) => {
     await pi(interaction, interaction.options.getInteger("digits"));
   else if (commandName == "info") await info(interaction);
   else if (commandName == "nasaimage")
-    await nasaimg(interaction, interaction.options.getString("Search term"));
+    await nasaimg(interaction, interaction.options.getString("search"));
   else if (commandName == "getquark") await getquark(interaction);
   else if (commandName == "marsimage") await marsimg(interaction);
   else if (commandName == "commandnotfound") await commandNotFound(interaction);

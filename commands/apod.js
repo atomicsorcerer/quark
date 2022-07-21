@@ -1,9 +1,8 @@
 const { EmbedBuilder } = require("discord.js");
 
-import dotenv from "dotenv";
-dotenv.config();
+require("dotenv").config();
 
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
 
 function apod(msg) {
   fetch(
@@ -29,3 +28,5 @@ function apod(msg) {
       msg.reply({ embeds: [embed] });
     });
 }
+
+module.exports = { apod };

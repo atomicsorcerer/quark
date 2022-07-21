@@ -1,8 +1,5 @@
 const { EmbedBuilder } = require("discord.js");
 
-import dotenv from "dotenv";
-dotenv.config();
-
 function getquark(msg) {
   const embed = new EmbedBuilder()
     .setColor("#007ea8")

@@ -1,7 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
 
-import dotenv from "dotenv";
-dotenv.config();
+require("dotenv").config();
 
 function help(msg) {
   const embed = new EmbedBuilder()
@@ -10,17 +9,18 @@ function help(msg) {
       `
     **NASA Resources**
     \`/apod\` - The NASA Picture of the Day
-    \`/marsimg\` - An image from NASA's Curiosity rover
+    \`/marsimage\` - An image from NASA's Curiosity rover
+    \`/nasaimage\` - An image NASA's database
 
     **Math Fun!**
     \`/pi (digits)\` - A long string of π up to (digits)
 
     **Fun**
     \`/spaceicon\` - Returns a personalized space theme icon (currently under development)
-    \`/guess\` - A guessing game to test your knowledge of the Solar System!
+    \`/guesstheplanet\` - A guessing game to test your knowledge of the Solar System!
 
     **Kerbal Space Program**
-    \`/kspimg\` - An image from the r/KerbalSpaceProgram subreddit
+    \`/kspimage\` - An image from the r/KerbalSpaceProgram subreddit
 
     **Github**
     \`/github\` - The Quark Github repository

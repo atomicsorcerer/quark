@@ -1,8 +1,5 @@
 const { EmbedBuilder } = require("discord.js");
 
-import dotenv from "dotenv";
-dotenv.config();
-
 function info(msg) {
   const embed = new EmbedBuilder()
     .setTitle("Quark Info")

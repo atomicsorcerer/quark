@@ -1,11 +1,8 @@
 const { EmbedBuilder } = require("discord.js");
 
-import dotenv from "dotenv";
-dotenv.config();
-
 const PI = require("pi");
 
-export default function pi(msg, digits) {
+function pi(msg, digits) {
   if (digits === undefined || digits === null) {
     let errorEmbed = new EmbedBuilder()
       .setTitle("Please choose a number for digits")
@@ -41,3 +38,5 @@ export default function pi(msg, digits) {
 
   msg.reply({ embeds: [embed] });
 }
+
+module.exports = { pi };

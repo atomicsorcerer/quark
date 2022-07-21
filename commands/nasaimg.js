@@ -1,15 +1,10 @@
-<<<<<<< HEAD
-import Discord from "discord.js";
-=======
 const { EmbedBuilder } = require("discord.js");
->>>>>>> a37eb04ca1b95efd48387fd06a453d8c73cc5fef
 
-import dotenv from "dotenv";
-dotenv.config();
+require("dotenv").config();
 
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
 
-export default function nasaimg(msg, param) {
+function nasaimg(msg, param) {
   var randNum = Math.floor(Math.random() * 10);
 
   fetch(`https://images-api.nasa.gov/search?q=${param}`)
@@ -44,3 +39,5 @@ export default function nasaimg(msg, param) {
       msg.reply({ embeds: [embed] });
     });
 }
+
+module.exports = { nasaimg };

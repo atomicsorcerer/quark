@@ -1,11 +1,10 @@
 const { EmbedBuilder } = require("discord.js");
 
-import dotenv from "dotenv";
-dotenv.config();
+require("dotenv").config();
 
 const fetch = require("node-fetch");
 
-export default function marsimg(msg) {
+function marsimg(msg) {
   var randNum = Math.floor(Math.random() * 100);
   var randNum2 = Math.floor(Math.random() * 3100 + 1);
 
