@@ -2,7 +2,7 @@
   "name": "Quark",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,9 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "canvas": "^2.7.0",
-    "discord.js": "^12.5.3",
+    "discord.js": "^13.1.0",
     "dotenv": "^8.2.0",
     "node-fetch": "^2.6.1",
-    "pi": "^2.0.4"
+    "pi": "^2.0.4",
+    "@discordjs/builders": "^0.6.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.23.1"
   }
 }

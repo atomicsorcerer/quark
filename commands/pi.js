@@ -28,7 +28,7 @@ function pi(msg, digits) {
             .setImage('https://media0.giphy.com/media/jpPZo8ScZenZ7yQK3v/giphy.gif')
             .setColor("#007ea8");
 
-        msg.channel.send(errorEmbed)
+        msg.reply(errorEmbed)
     })
 }
 

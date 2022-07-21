@@ -4,8 +4,6 @@ require("dotenv").config();
 
 const fetch = require("node-fetch");
 
-const client = new Discord.Client();
-
 function apod(msg) {
 
   fetch(
@@ -29,7 +27,7 @@ function apod(msg) {
       .setImage("https://media0.giphy.com/media/jpPZo8ScZenZ7yQK3v/giphy.gif")
       .setColor("#007ea8");
 
-      msg.channel.send(embed);
+      msg.reply(embed);
     })
 }
 
