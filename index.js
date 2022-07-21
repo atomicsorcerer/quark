@@ -1,16 +1,16 @@
-const { Client, Intents } = require("discord.js");
+const { Client, Intents, EmbedBuilder } = require("discord.js");
 
 require("dotenv").config();
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: ["Guilds"] });
 
 const { help } = require("./commands/help");
+// const { spaceicon } = require("./commands/spaceicon");
 const { info } = require("./commands/info");
 const { nasaimg } = require("./commands/nasaimg");
 const { getquark } = require("./commands/getquark");
 const { apod } = require("./commands/apod");
 const { marsimg } = require("./commands/marsimg");
-const { spaceicon } = require("./commands/spaceicon");
 const { commandNotFound } = require("./commands/commandNotFound");
 const { pi } = require("./commands/pi");
 const { github } = require("./commands/github");
@@ -19,25 +19,102 @@ const { kspimg } = require("./commands/kspimg");
 const { guessThePlanet } = require("./commands/guessThePlanet");
 
 client.once("ready", () => {
-    console.log("Quark is ready!");
+  console.log("Quark is ready!");
 
-    client.user.setActivity(`q?help | Observing ${client.guilds.cache.size} servers, and ${client.guilds.cache.map((guild) => guild.memberCount).reduce((p, c) => p + c)} users! | bit.ly/quark-bot`, {
-        type: "LISTENING",
-        url: "https://github.com/SJTechy/buzz",
-    });
+  client.user.setActivity(
+    `/help | Observing ${
+      client.guilds.cache.size
+    } servers, and ${client.guilds.cache
+      .map((guild) => guild.memberCount)
+      .reduce((p, c) => p + c)} users! | bit.ly/quark-bot`,
+    {
+      type: "LISTENING",
+    }
+  );
 });
 
-client.on('interactionCreate', async interaction => {
-    if (!interaction.isCommand()) return;
+client.on("interactionCreate", async (interaction) => {
+  const { commandName } = interaction;
 
-    const { commandName } = interaction;
+  if (interaction.isSelectMenu()) {
+    if (interaction.message.interaction.commandName === "guesstheplanet") {
+      const correctEmbed = new EmbedBuilder()
+        .setTitle("Guess the Planet (or moon)")
+        .setDescription(
+          `
+        ✅✅ Correct!! ✅✅
+        `
+        )
+        .setColor("#007ea8");
 
-    if (commandName === 'help') await help(interaction)
-    else if (commandName == 'apod') await apod(interaction)
-    else if (commandName == 'pi') await pi(interaction, interaction.options.getInteger('digits'))
-    else if (commandName == 'spaceicon') await spaceicon(interaction)
-    // else if (commandName == 'apod') await apod(interaction)
+      const wrongEmbed = new EmbedBuilder()
+        .setTitle("Guess the Planet (or moon)")
+        .setDescription(
+          `
+        ❌❌ Sorry, that is incorrect. ❌❌
+        `
+        )
+        .setColor("#007ea8");
+
+      await interaction.update({
+        embeds: [
+          interaction.customId === interaction.values[0]
+            ? correctEmbed
+            : wrongEmbed,
+        ],
+        components: [],
+      });
+    }
+
+    return;
+  }
+
+  if (commandName === "help") await help(interaction);
+  else if (commandName == "apod") await apod(interaction);
+  else if (commandName == "pi")
+    await pi(interaction, interaction.options.getInteger("digits"));
+  else if (commandName == "info") await info(interaction);
+  else if (commandName == "nasaimage")
+    await nasaimg(interaction, interaction.options.getString("Search term"));
+  else if (commandName == "getquark") await getquark(interaction);
+  else if (commandName == "marsimage") await marsimg(interaction);
+  else if (commandName == "commandnotfound") await commandNotFound(interaction);
+  else if (commandName == "github") await github(interaction);
+  else if (commandName == "kspimage") await kspimg(interaction);
+  else if (commandName == "guesstheplanet") await guessThePlanet(interaction);
 });
+
+// client.on("message", (msg) => {
+//     if (msg.guild.id !== '772179279609462794') return
+
+//     if ((msg.content.toLowerCase().startsWith(prefix) && !msg.author.bot) || (msg.channel.type == 'dm' && !msg.author.bot)) {
+//         var args;
+
+//         if (msg.channel.type == 'dm' && msg.content.toLowerCase().startsWith(prefix)) {
+
+// client.on("message", (msg) => {
+//     if (msg.guild.id !== '772179279609462794') return
+
+//     if ((msg.content.toLowerCase().startsWith(prefix) && !msg.author.bot) || (msg.channel.type == 'dm' && !msg.author.bot)) {
+//         var args;
+
+//         if (msg.channel.type == 'dm' && msg.content.toLowerCase().startsWith(prefix)) {
+
+// client.on("message", (msg) => {
+//     if (msg.guild.id !== '772179279609462794') return
+
+//     if ((msg.content.toLowerCase().startsWith(prefix) && !msg.author.bot) || (msg.channel.type == 'dm' && !msg.author.bot)) {
+//         var args;
+
+//         if (msg.channel.type == 'dm' && msg.content.toLowerCase().startsWith(prefix)) {
+
+// client.on("message", (msg) => {
+//     if (msg.guild.id !== '772179279609462794') return
+
+//     if ((msg.content.toLowerCase().startsWith(prefix) && !msg.author.bot) || (msg.channel.type == 'dm' && !msg.author.bot)) {
+//         var args;
+
+//         if (msg.channel.type == 'dm' && msg.content.toLowerCase().startsWith(prefix)) {
 
 // client.on("message", (msg) => {
 //     if (msg.guild.id !== '772179279609462794') return

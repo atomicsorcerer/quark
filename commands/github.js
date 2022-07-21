@@ -1,21 +1,20 @@
-const Discord = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 require("dotenv").config();
 
-
 function github(msg) {
-    const embed = new Discord.MessageEmbed()
-        .setTitle('Quark Github Repository')
-        .setDescription(`
-        Here is the Quark Github [repository](https://github.com/SJTechy/quark)!
+  const embed = new EmbedBuilder()
+    .setTitle("Quark Github Repository")
+    .setDescription(
+      `
+        Here is the Quark Github [repository](https://github.com/atomicsorcerer/quark)!
 
         Please star the repo, it really helps!
+        `
+    )
+    .setColor("#007ea8");
 
-        If you have any questions, or want to contribute features, please contact \`@SJTechy#2722\`\!
-        `)
-        .setColor("#007ea8");
-
-    msg.channel.send(embed)
+  msg.reply({ embeds: [embed] });
 }
 
 module.exports = { github };

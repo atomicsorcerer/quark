@@ -1,11 +1,12 @@
-const Discord = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 require("dotenv").config();
 
 function help(msg) {
-    const embed = new Discord.MessageEmbed()
+  const embed = new EmbedBuilder()
     .setTitle("Quark Help")
-    .setDescription(`
+    .setDescription(
+      `
     **NASA Resources**
     \`/apod\` - The NASA Picture of the Day
     \`/marsimg\` - An image from NASA's Curiosity rover
@@ -14,7 +15,7 @@ function help(msg) {
     \`/pi (digits)\` - A long string of π up to (digits)
 
     **Fun**
-    \`/spaceicon\` - Returns a personalized space theme icon
+    \`/spaceicon\` - Returns a personalized space theme icon (currently under development)
     \`/guess\` - A guessing game to test your knowledge of the Solar System!
 
     **Kerbal Space Program**
@@ -28,10 +29,11 @@ function help(msg) {
     \`/info\` - General info about Quark
 
 
-    `)
-    .setColor("#007ea8")
+    `
+    )
+    .setColor("#007ea8");
 
-  msg.reply({embeds: [embed]})
+  msg.reply({ embeds: [embed] });
 }
 
-module.exports = { help }
+module.exports = { help };

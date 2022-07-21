@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 require("dotenv").config();
 
@@ -21,15 +21,15 @@ function kspimg(msg) {
         kspimg(msg);
         return;
       } else if (!data.data.children[randNum].data.is_video) {
-        const embed = new Discord.MessageEmbed()
+        const embed = new EmbedBuilder()
           .setTitle("KSP Image")
           .setDescription("From the r/KerbalSpaceProgram subreddit")
           .setImage(url)
-          .setColor("#007ea8")
+          .setColor("#007ea8");
 
-        msg.channel.send(embed);
+        msg.reply({ embeds: [embed] });
       }
     });
 }
 
-module.exports = { kspimg }
+module.exports = { kspimg };
