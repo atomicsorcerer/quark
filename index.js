@@ -18,17 +18,17 @@ const { admin } = require("./commands/admin");
 const { kspimg } = require("./commands/kspimg");
 const { guessThePlanet } = require("./commands/guessThePlanet");
 
-client.once("ready", () => {
-  console.log("Quark is ready!");
+client.on("ready", () => {
+  // client.user.setPresence({
+  //   activities: [
+  //     {
+  //       name: `/help | bit.ly/quark-bot`,
+  //       type: `LISTENING`,
+  //     },
+  //   ],
+  // });
 
-  client.user.setPresence({
-    activities: [
-      {
-        name: `/help | Observing ${client.guilds.cache.size} servers | bit.ly/quark-bot`,
-        type: `LISTENING`,
-      },
-    ],
-  });
+  console.log("Quark is ready!");
 
   // client.user.setActivity(
   //   `/help | Observing ${client.guilds.cache.size} servers | bit.ly/quark-bot`,
@@ -56,7 +56,7 @@ client.on("interactionCreate", async (interaction) => {
         .setTitle("Guess the Planet (or moon)")
         .setDescription(
           `
-        ❌❌ Sorry, that is incorrect. ❌❌
+        ❌ Sorry, that is incorrect. ❌
         `
         )
         .setColor("#007ea8");
