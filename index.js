@@ -78,15 +78,15 @@ client.on("interactionCreate", async (interaction) => {
   else if (commandName == "apod") await apod(interaction);
   else if (commandName == "pi")
     await pi(interaction, interaction.options.getInteger("digits"));
-  else if (commandName == "info") await info(interaction);
+  else if (commandName == "info") await info(interaction, client);
   else if (commandName == "nasaimage")
     await nasaimg(interaction, interaction.options.getString("search"));
   else if (commandName == "getquark") await getquark(interaction);
   else if (commandName == "marsimage") await marsimg(interaction);
-  else if (commandName == "commandnotfound") await commandNotFound(interaction);
   else if (commandName == "github") await github(interaction);
   else if (commandName == "kspimage") await kspimg(interaction);
   else if (commandName == "guesstheplanet") await guessThePlanet(interaction);
+  else if (commandName == "commandnotfound") await commandNotFound(interaction);
 });
 
 // client.on("message", (msg) => {
